@@ -8,7 +8,7 @@
   <style>
     * {
       box-sizing: border-box;
-      font-family: "Arial", sans-serif;
+      font-family: Arial, sans-serif;
     }
 
     body {
@@ -31,14 +31,15 @@
     }
 
     .logo {
-  display: flex;
-  align-items: center;
-}
-.logo img {
-  height: 40px;
-  width: auto;
-  display: block;
-}
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 70px;
+      width: auto;
+      display: block;
+    }
 
     nav a {
       margin-left: 28px;
@@ -83,15 +84,20 @@
       color: #eee;
     }
 
+    .hero button,
+    .btn-red {
+      background: #c30021;
+      color: white;
+      border: none;
+      padding: 15px 28px;
+      border-radius: 35px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
     .hero button {
       margin-top: 30px;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 40px;
       background: #ef233c;
-      color: white;
-      font-weight: 800;
-      cursor: pointer;
     }
 
     .stats {
@@ -184,16 +190,6 @@
       align-items: start;
     }
 
-    .btn-red {
-      background: #c30021;
-      color: white;
-      border: none;
-      padding: 15px 28px;
-      border-radius: 35px;
-      font-weight: 900;
-      cursor: pointer;
-    }
-
     .result {
       background: #111;
       color: white;
@@ -257,60 +253,65 @@
       color: #111;
     }
 
-    .partners-section{
-      padding:80px 60px;
-      background:#fff;
-      text-align:center;
+    .partners-section {
+      padding: 90px 60px;
+      background: #fff;
+      text-align: center;
     }
 
-    .partner-subtitle{
-      color:#c30021;
-      font-weight:700;
-      letter-spacing:2px;
-      margin-bottom:10px;
+    .partner-subtitle {
+      color: #c30021;
+      font-weight: 800;
+      letter-spacing: 3px;
+      margin-bottom: 14px;
     }
 
-    .partners-section h2{
-      font-size:56px;
-      margin-bottom:40px;
+    .partners-section h2 {
+      font-size: 56px;
+      margin: 0 0 45px;
     }
 
-    .partners-slider{
-      display:flex;
-      gap:20px;
-      overflow-x:auto;
-      scroll-behavior:smooth;
-      padding-bottom:20px;
+    .partners-slider {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 10px 0 28px;
     }
 
-    .partners-slider::-webkit-scrollbar{
-      height:8px;
+    .partners-slider::-webkit-scrollbar {
+      height: 8px;
     }
 
-    .partners-slider::-webkit-scrollbar-thumb{
-      background:#c30021;
-      border-radius:10px;
+    .partners-slider::-webkit-scrollbar-thumb {
+      background: #c30021;
+      border-radius: 10px;
     }
 
-    .partner-card{
-      min-width:250px;
-      background:white;
-      border:1px solid #eee;
-      border-radius:12px;
-      padding:20px;
-      flex-shrink:0;
-      transition:0.3s;
+    .partner-card {
+      min-width: 250px;
+      height: 170px;
+      background: white;
+      border: 1px solid #eee;
+      border-radius: 14px;
+      padding: 25px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
     }
 
-    .partner-card:hover{
-      transform:translateY(-5px);
-      box-shadow:0 5px 15px rgba(0,0,0,0.15);
+    .partner-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.12);
     }
 
-    .partner-card img{
-      width:100%;
-      height:120px;
-      object-fit:contain;
+    .partner-card img {
+      width: 100%;
+      height: 105px;
+      object-fit: contain;
     }
 
     footer {
@@ -351,6 +352,10 @@
       .calc-wrap {
         grid-template-columns: 1fr;
       }
+
+      .partner-card {
+        min-width: 220px;
+      }
     }
   </style>
 </head>
@@ -359,8 +364,9 @@
 
 <header>
   <div class="logo">
-    <img src="logo.png" alt="DKSH Logo">
+    <img src="images/logo.png" alt="DKSH Logo">
   </div>
+
   <nav>
     <a href=" ">About</a >
     <a href="#calculator">Calculator</a >
@@ -379,6 +385,7 @@
       <h2>28%</h2>
       <p>Potential Carbon Reduction</p >
     </div>
+
     <div class="stat-box">
       <h2>360°</h2>
       <p>Virtual Factory Tour</p >
@@ -395,10 +402,12 @@
       <h3>Logistics Optimization</h3>
       <p>Reduce emissions from transportation routes and delivery processes.</p >
     </div>
+
     <div class="card">
       <h3>Smart Warehouse</h3>
       <p>Improve energy efficiency through better storage and operations.</p >
     </div>
+
     <div class="card">
       <h3>ESG Data Support</h3>
       <p>Help partners understand carbon footprint and prepare sustainability reports.</p >
@@ -463,10 +472,12 @@
       <h3>EU Carbon Regulations</h3>
       <p>Learn about carbon rules that pressure consumer goods businesses.</p >
     </div>
+
     <div class="card">
       <h3>Thailand ESG Updates</h3>
       <p>Understand local environmental requirements and market trends.</p >
     </div>
+
     <div class="card">
       <h3>Carbon Footprint Guide</h3>
       <p>Explain how carbon emissions are calculated and reduced.</p >
@@ -503,36 +514,63 @@
 </section>
 
 <section id="partners" class="partners-section">
-    <p class="partner-subtitle">TRUSTED PARTNERS FOR NET ZERO</p >
-    <h2>Our Partners</h2>
+  <p class="partner-subtitle">TRUSTED PARTNERS FOR NET ZERO</p >
+  <h2>Our Partners</h2>
 
-    <div class="partners-slider">
-
-        <div class="partner-card">
-            <a href=" " target="_blank">
-                < img src="partner1.jpg" alt="Partner 1">
-            </a >
-        </div>
-
-        <div class="partner-card">
-            <a href="https://share.google/iYxLbGzpr1ZAfgkS8" target="_blank">
-                < img src="partner2.jpg" alt="Partner 2">
-            </a >
-        </div>
-
-        <div class="partner-card">
-            <a href="https://share.google/DoyJN4GAXI9K3vJQb" target="_blank">
-                < img src="partner3.jpg" alt="Partner 3">
-            </a >
-        </div>
-
-        <div class="partner-card">
-            <a href="https://share.google/rkBdPZdO65tEofHGy" target="_blank">
-                < img src="partner4.jpg" alt="Partner 4">
-            </a >
-        </div>
-
+  <div class="partners-slider">
+    <div class="partner-card">
+        <img src="images/bayer.svg" alt="Bayer">
     </div>
+
+    <div class="partner-card">
+        <img src="images/buchi.webp" alt="Buchi">
+    </div>
+
+    <div class="partner-card">
+        <img src="images/cummins.png" alt="Cummins">
+    </div>
+
+    <div class="partner-card">
+        <img src="images/diethelm.png" alt="Diethelm">
+    </div>
+
+    <div class="partner-card">
+        <img src="images/enya.png" alt="Enya">
+    </div>
+
+    <div class="partner-card">
+        <img src="images/kemin.webp" alt="Kemin">
+    </div>
+
+    <div class="partner-card">
+        <img src="images/kyowa.png" alt="Kyowa">
+    </div>
+
+    <div class="partner-card">
+        <img src="images/sabic.png" alt="Sabic">
+    </div>
+
+    <div class="partner-card">
+        <img src="images/skintific.jpeg" alt="Skintific">
+    </div>
+
+    <div class="partner-card">
+        <img src="images/smart.jpeg" alt="Smart">
+    </div>
+
+    <div class="partner-card">
+        <img src="images/solabia.webp" alt="Solabia">
+    </div>
+
+    <div class="partner-card">
+        <img src="images/thai.jpeg" alt="Thai">
+    </div>
+
+    <div class="partner-card">
+        <img src="images/uob.png" alt="Uob">
+    </div>
+
+  </div>
 </section>
 
 <footer>
