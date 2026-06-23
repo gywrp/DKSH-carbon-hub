@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DKSH Carbon Partner Hub</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Arial", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: #171717;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 22px 70px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.92);
+      z-index: 10;
+      border-bottom: 1px solid #eee;
+    }
+
+    .logo {
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+    nav a {
+      margin-left: 28px;
+      text-decoration: none;
+      color: #111;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .contact-btn {
+      background: #c30021;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 30px;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 150px 70px 80px;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.75), rgba(0,0,0,.25)),
+        url("https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 86px;
+      line-height: 0.95;
+      margin: 0;
+      text-transform: uppercase;
+      font-weight: 900;
+      max-width: 800px;
+    }
+
+    .hero p {
+      max-width: 480px;
+      margin-top: 25px;
+      font-size: 18px;
+      color: #eee;
+    }
+
+    .hero button {
+      margin-top: 30px;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 40px;
+      background: #ef233c;
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .stats {
+      display: flex;
+      gap: 30px;
+      position: absolute;
+      right: 70px;
+      bottom: 60px;
+    }
+
+    .stat-box {
+      width: 190px;
+      padding: 25px;
+      background: white;
+      color: #111;
+    }
+
+    .stat-box p {
+      color: #111;
+      font-weight: 600;
+    }
+
+    .stat-box.red {
+      background: #c30021;
+      color: white;
+    }
+
+    .stat-box.red p,
+    .stat-box.red h2 {
+      color: white;
+    }
+
+    .stat-box h2 {
+      margin: 0;
+      font-size: 44px;
+    }
+
+    section {
+      padding: 90px 70px;
+    }
+
+    .section-title {
+      font-size: 52px;
+      text-transform: uppercase;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .red-text {
+      color: #c30021;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #eee;
+      padding: 30px;
+      min-height: 180px;
+      box-shadow: 0 15px 35px rgba(0,0,0,.06);
+    }
+
+    .card h3 {
+      color: #c30021;
+      text-transform: uppercase;
+      margin-top: 0;
+    }
+
+    .calculator {
+      background: #f7f7f7;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0 20px;
+      border: 1px solid #ddd;
+      font-size: 15px;
+    }
+
+    .calc-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+      align-items: start;
+    }
+
+    .btn-red {
+      background: #c30021;
+      color: white;
+      border: none;
+      padding: 15px 28px;
+      border-radius: 35px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .result {
+      background: #111;
+      color: white;
+      padding: 35px;
+      display: none;
+    }
+
+    .result h2 {
+      font-size: 45px;
+      color: #ef233c;
+    }
+
+    .bar {
+      height: 35px;
+      background: #eee;
+      margin: 18px 0;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      width: 72%;
+      background: #c30021;
+    }
+
+    .tour {
+      background: #111;
+      color: white;
+    }
+
+    .tour-box {
+      height: 430px;
+      background:
+        linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.5)),
+        url("https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      margin-top: 35px;
+    }
+
+    .hotspot {
+      position: absolute;
+      background: #ef233c;
+      padding: 12px 18px;
+      border-radius: 30px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .h1 { top: 90px; left: 120px; }
+    .h2 { top: 210px; right: 180px; }
+    .h3 { bottom: 80px; left: 350px; }
+
+    .partner {
+      background: #c30021;
+      color: white;
+    }
+
+    .partner .card {
+      color: #111;
+    }
+
+    footer {
+      padding: 40px 70px;
+      background: #111;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 800px) {
+      header {
+        padding: 18px 25px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        padding: 130px 30px 80px;
+      }
+
+      .hero h1 {
+        font-size: 52px;
+      }
+
+      .stats {
+        position: static;
+        margin-top: 50px;
+        flex-direction: column;
+      }
+
+      section {
+        padding: 60px 30px;
+      }
+
+      .calc-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <img src="./images/logo.png" alt="DKSH Logo">
+  </div>
+  <nav>
+    <a href=" ">About</a >
+    <a href="#calculator">Calculator</a >
+    <a href="#tour">Virtual Tour</a >
+    <a href="#partner" class="contact-btn">Become Partner</a >
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Carbon<br>Partner<br>Hub</h1>
+  <p>Helping business partners reduce carbon footprint through smarter logistics, energy, packaging, and sustainability solutions.</p >
+  <button onclick="location.href='#calculator'">CALCULATE CARBON</button>
+
+  <div class="stats">
+    <div class="stat-box red">
+      <h2>28%</h2>
+      <p>Potential Carbon Reduction</p >
+    </div>
+    <div class="stat-box">
+      <h2>360°</h2>
+      <p>Virtual Factory Tour</p >
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <h2 class="section-title">Trusted Partner for <span class="red-text">Net Zero</span></h2>
+  <p>DKSH supports partners with data-driven sustainability solutions and operational improvements.</p >
+
+  <div class="grid">
+    <div class="card">
+      <h3>Logistics Optimization</h3>
+      <p>Reduce emissions from transportation routes and delivery processes.</p >
+    </div>
+    <div class="card">
+      <h3>Smart Warehouse</h3>
+      <p>Improve energy efficiency through better storage and operations.</p >
+    </div>
+    <div class="card">
+      <h3>ESG Data Support</h3>
+      <p>Help partners understand carbon footprint and prepare sustainability reports.</p >
+    </div>
+  </div>
+</section>
+
+<section id="calculator" class="calculator">
+  <h2 class="section-title">Carbon <span class="red-text">Calculator</span></h2>
+
+  <div class="calc-wrap">
+    <div class="card">
+      <label>Transportation distance / month (km)</label>
+      <input type="number" id="transport" placeholder="Example: 5000">
+
+      <label>Electricity usage / month (kWh)</label>
+      <input type="number" id="energy" placeholder="Example: 1200">
+
+      <label>Packaging units / month</label>
+      <input type="number" id="packaging" placeholder="Example: 3000">
+
+      <label>Warehouse area (sqm)</label>
+      <input type="number" id="warehouse" placeholder="Example: 800">
+
+      <button class="btn-red" onclick="calculateCarbon()">CALCULATE</button>
+    </div>
+
+    <div class="result" id="resultBox">
+      <h3>Result Dashboard</h3>
+      <h2 id="percent">28%</h2>
+      <p id="before"></p >
+      <p id="after"></p >
+      <div class="bar">
+        <div class="bar-fill"></div>
+      </div>
+      <p id="reduction"></p >
+    </div>
+  </div>
+</section>
+
+<section id="tour" class="tour">
+  <h2 class="section-title">Virtual Factory <span class="red-text">Tour</span></h2>
+  <p>Click each point to explore how DKSH reduces carbon in real operations.</p >
+
+  <div class="tour-box">
+    <div class="hotspot h1" onclick="showInfo('Solar Rooftop helps reduce electricity-related emissions.')">Solar Roof</div>
+    <div class="hotspot h2" onclick="showInfo('Smart Warehouse improves storage and energy efficiency.')">Warehouse</div>
+    <div class="hotspot h3" onclick="showInfo('EV Fleet supports lower-carbon transportation.')">EV Fleet</div>
+  </div>
+
+  <div class="result" id="tourInfo" style="margin-top:25px;">
+    <h3>Tour Information</h3>
+    <p id="tourText"></p >
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">ESG Knowledge Center</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>EU Carbon Regulations</h3>
+      <p>Learn about carbon rules that pressure consumer goods businesses.</p >
+    </div>
+    <div class="card">
+      <h3>Thailand ESG Updates</h3>
+      <p>Understand local environmental requirements and market trends.</p >
+    </div>
+    <div class="card">
+      <h3>Carbon Footprint Guide</h3>
+      <p>Explain how carbon emissions are calculated and reduced.</p >
+    </div>
+  </div>
+</section>
+
+<section id="partner" class="partner">
+  <h2 class="section-title">Become a Partner</h2>
+
+  <div class="card">
+    <label>Company Name</label>
+    <input type="text" placeholder="Your company name">
+
+    <label>Industry</label>
+    <select>
+      <option>Consumer Goods</option>
+      <option>Healthcare</option>
+      <option>Technology</option>
+      <option>Logistics</option>
+    </select>
+
+    <label>Net Zero Target Year</label>
+    <input type="number" placeholder="Example: 2050">
+
+    <label>Email</label>
+    <input type="email" placeholder="example@company.com">
+
+    <label>Message</label>
+    <textarea placeholder="Tell us about your sustainability goal"></textarea>
+
+    <button class="btn-red">SUBMIT</button>
+  </div>
+</section>
+
+<footer>
+  <p>DKSH Carbon Partner Hub</p >
+  <p>Trusted Partner for Sustainable Growth</p >
+</footer>
+
+<script>
+  function calculateCarbon() {
+    let transport = Number(document.getElementById("transport").value) || 0;
+    let energy = Number(document.getElementById("energy").value) || 0;
+    let packaging = Number(document.getElementById("packaging").value) || 0;
+    let warehouse = Number(document.getElementById("warehouse").value) || 0;
+
+    let beforeCarbon =
+      (transport * 0.2) +
+      (energy * 0.5) +
+      (packaging * 0.03) +
+      (warehouse * 0.1);
+
+    let afterCarbon = beforeCarbon * 0.72;
+    let reduction = beforeCarbon - afterCarbon;
+
+    document.getElementById("before").innerHTML =
+      "Current Carbon Emission: <b>" + beforeCarbon.toFixed(2) + " kgCO₂e</b>";
+
+    document.getElementById("after").innerHTML =
+      "After DKSH Solution: <b>" + afterCarbon.toFixed(2) + " kgCO₂e</b>";
+
+    document.getElementById("reduction").innerHTML =
+      "Estimated Carbon Reduced: <b>" + reduction.toFixed(2) + " kgCO₂e</b>";
+
+    document.getElementById("resultBox").style.display = "block";
+  }
+
+  function showInfo(text) {
+    document.getElementById("tourText").innerText = text;
+    document.getElementById("tourInfo").style.display = "block";
+  }
+</script>
+
+</body>
+</html>
