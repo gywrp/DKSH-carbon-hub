@@ -289,8 +289,8 @@
     }
 
     .partner-card {
-      min-width: 130px;
-      height: 80px;
+      min-width: 160px;
+      height: 100px;
       background: white;
       border: 1px solid #eee;
       border-radius: 12px;
@@ -302,16 +302,25 @@
       transition: 0.3s;
       box-shadow: 0 8px 20px rgba(0,0,0,0.04);
     }
-
+    
     .partner-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 12px 25px rgba(0,0,0,0.12);
     }
 
     .partner-card img {
-      max-width: 80px;
-      max-height: 40px;
+      max-width: 100px;
+      max-height: 50px;
       object-fit: contain;
+    }
+    
+    .partners-slider {
+      display: flex;
+      gap: 15px;
+    }
+
+    .partner-card {
+      flex: 0 0 160px;
     }
 
     footer {
