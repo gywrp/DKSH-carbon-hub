@@ -587,40 +587,45 @@
   <p>DKSH Carbon Partner Hub</p >
   <p>Trusted Partner for Sustainable Growth</p >
 </footer>
-
+    
 <script>
-  function calculateCarbon() {
-    let transport = Number(document.getElementById("transport").value) || 0;
-    let energy = Number(document.getElementById("energy").value) || 0;
-    let packaging = Number(document.getElementById("packaging").value) || 0;
-    let warehouse = Number(document.getElementById("warehouse").value) || 0;
+function calculateCarbon() {
+  let transport = Number(document.getElementById("transport").value) || 0;
+  let energy = Number(document.getElementById("energy").value) || 0;
+  let packaging = Number(document.getElementById("packaging").value) || 0;
+  let warehouse = Number(document.getElementById("warehouse").value) || 0;
 
-    let beforeCarbon =
-      (transport * 0.2) +
-      (energy * 0.5) +
-      (packaging * 0.03) +
-      (warehouse * 0.1);
+  let transportEF = 0.6;   
+  let electricityEF = 0.5; 
+  let packagingWeight = 0.1; 
+  let packagingEF = 1.0;   
+  let warehouseEF = 5;     
 
-    let afterCarbon = beforeCarbon * 0.72;
-    let reduction = beforeCarbon - afterCarbon;
+  let transportCarbon = transport * transportEF;
+  let energyCarbon = energy * electricityEF;
+  let packagingCarbon = packaging * packagingWeight * packagingEF;
+  let warehouseCarbon = warehouse * warehouseEF;
 
-    document.getElementById("before").innerHTML =
-      "Current Carbon Emission: <b>" + beforeCarbon.toFixed(2) + " kgCO₂e</b>";
+  let beforeCarbon =
+    transportCarbon + energyCarbon + packagingCarbon + warehouseCarbon;
 
-    document.getElementById("after").innerHTML =
-      "After DKSH Solution: <b>" + afterCarbon.toFixed(2) + " kgCO₂e</b>";
+  let afterCarbon = beforeCarbon * 0.575;
+  let reduction = beforeCarbon - afterCarbon;
 
-    document.getElementById("reduction").innerHTML =
-      "Estimated Carbon Reduced: <b>" + reduction.toFixed(2) + " kgCO₂e</b>";
+  document.getElementById("percent").innerHTML = "42.5%";
 
-    document.getElementById("resultBox").style.display = "block";
+  document.getElementById("before").innerHTML =
+    "Current Carbon Emission: <b>" + beforeCarbon.toFixed(2) + " kgCO₂e / month</b>";
+
+  document.getElementById("after").innerHTML =
+    "After DKSH Solution: <b>" + afterCarbon.toFixed(2) + " kgCO₂e / month</b>";
+
+  document.getElementById("reduction").innerHTML =
+    "Estimated Carbon Reduced: <b>" + reduction.toFixed(2) + " kgCO₂e / month</b>";
+
+  document.getElementById("resultBox").style.display = "block";
   }
-
-  function showInfo(text) {
-    document.getElementById("tourText").innerText = text;
-    document.getElementById("tourInfo").style.display = "block";
-  }
+  
 </script>
-
 </body>
 </html>
